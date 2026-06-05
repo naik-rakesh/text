@@ -88,7 +88,7 @@ with tab1:
                 recommended_products.columns = ["Product ID (SKU)", "Avg Rating (In Cluster)", "Total Ratings Count", "Cluster Type"]
 
                 st.markdown(f"#### 🎯 Top {top_n_user} Items for Cluster #{assigned_cluster}")
-                st.dataframe(recommended_products.style.background_gradient(cmap="viridis", subset=["Avg Rating (In Cluster)"]), use_container_width=True)
+                st.dataframe(recommended_products, use_container_width=True)
             else:
                 st.error("Provided User ID does not exist inside system matrices.")
 
@@ -149,6 +149,6 @@ with tab2:
 
                 final_item_output = pd.DataFrame(enriched_recommendations)
                 st.markdown(f"#### 🎯 Top {top_n_item} Similar Products for `{input_item_id}`")
-                st.dataframe(final_item_output.style.background_gradient(cmap="magma", subset=["Cosine Similarity Score"]), use_container_width=True)
+                st.dataframe(final_item_output, use_container_width=True)
             else:
                 st.error("Target SKU key mismatch. Value not found inside system matrix configurations.")
